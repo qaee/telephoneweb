@@ -11,10 +11,11 @@ export class ContactlistComponent implements OnInit {
   constructor(private contactService: ContactService) { }
   contacts: ContactsEntity[];
   dataSource: MatTableDataSource<ContactsEntity>;
-  //@ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort) sort: MatSort;
   displayedColumns = ['Name', 'ContactNumber', 'Address', 'Email' , 'actions'];
   ngOnInit() {
     this.getContacts();
+    this.dataSource.sort = this.sort;
   }
 
   private getContacts() {

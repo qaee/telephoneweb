@@ -7,13 +7,42 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ContactService {
+/*
   _url = 'http://localhost:8080/contacts';
-  constructor(private httpClient: HttpClient) { }
+*/
+  _url = '/assets/data/contacts.json';
+  constructor(private http: HttpClient) { }
 
   public getContacts(): Observable<Contact> {
-    return this.httpClient.get<Contact>(this._url);
+    return this.http.get<Contact>(this._url);
   }
 
+  addContact (contact: ContactsEntity): void {
+    console.log('Add Contact Post: ');
+    this.http
+      .post(this._url, contact)
+      .subscribe(status => console.log(JSON.stringify(status)));
+  }
+  updateContact (contact: ContactsEntity): void {
+    this.http
+      .put(contact._links.self.href, contact)
+      .subscribe(
+        (val) => {
+          console.log("Update call successful value returned in body",
+            val);
+        },
+        response => {
+          console.log("Update call in error", response);
+        },
+        () => {
+          console.log("The Update observable is now completed.");
+        });
+
+  }
+  deleteContact (contact: ContactsEntity){
+    return this.http.
+    delete(contact._links.self.href);
+  }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead

@@ -1,0 +1,37 @@
+<div class="container">
+  <h3 mat-dialog-title>Edit Contact </h3>
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Name"
+               [(ngModel)]="contact.name" name="name" required >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+  <div class="form">
+      <mat-form-field color="accent">
+        <textarea matInput #input class="form-control"
+                  placeholder="Address" [(ngModel)]="contact.address"
+                  name="address" ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="Email" [(ngModel)]="contact.email"
+               name="email" maxlength="50" required >
+        <mat-hint align="end">{{inputstate.value?.length || 0}}/50</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="Telephone Number" [(ngModel)]="contact.contactNumber[0].telephoneNumber"
+               name="telephoneNumber" maxlength="30" required >
+        <mat-hint align="end">{{inputstate.value?.length || 0}}/30</mat-hint>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [type]="submit" [mat-dialog-close]="1" (click)="stopEdit()">Save</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>

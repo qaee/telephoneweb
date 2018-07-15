@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {AddDialogComponent} from './dialogs/add/add.dialog.component';
+import {EditDialogComponent} from './dialogs/edit/edit.dialog.component';
 import { AppComponent } from './app.component';
 import {ContactService} from './services/contact.service';
 import { ContactlistComponent } from './contactlist/contactlist.component';
@@ -12,7 +13,9 @@ import {MaterialimportsModule} from './materialimports/materialimports.module';
 @NgModule({
   declarations: [
     AppComponent,
-    ContactlistComponent
+    ContactlistComponent,
+    AddDialogComponent,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,10 @@ import {MaterialimportsModule} from './materialimports/materialimports.module';
     ReactiveFormsModule
   ],
   providers: [ContactService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AddDialogComponent,
+    EditDialogComponent
+  ]
 })
 export class AppModule { }

@@ -1,0 +1,43 @@
+{
+  "_embedded" : {
+    "contacts" : [ {
+      "name" : "Qasim",
+      "address" : "josephsurburg str 4a",
+      "email" : "ranaqasim@gmail.com",
+      "contactNumber" : [ {
+        "telephoneNumber" : "12222"
+      } ],
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/contacts/1"
+        },
+        "contact" : {
+          "href" : "http://localhost:8080/contacts/1"
+        }
+      }
+    }, {
+      "name" : "Ali",
+      "address" : "josephsurburg str 4a",
+      "email" : "ranaqasim@gmail.com",
+      "contactNumber" : [ {
+        "telephoneNumber" : "12221"
+      } ],
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/contacts/3"
+        },
+        "contact" : {
+          "href" : "http://localhost:8080/contacts/3"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/contacts"
+    },
+    "profile" : {
+      "href" : "http://localhost:8080/profile/contacts"
+    }
+  }
+}

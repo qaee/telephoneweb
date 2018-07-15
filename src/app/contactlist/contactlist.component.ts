@@ -29,6 +29,7 @@ export class ContactlistComponent implements OnInit {
         this.contacts = resp._embedded.contacts;
         this.dataSource = new MatTableDataSource<ContactsEntity>();
         this.dataSource.data = (this.contacts);
+        this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       });
   }

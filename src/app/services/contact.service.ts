@@ -7,10 +7,8 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ContactService {
-/*
   _url = 'http://localhost:8080/contacts';
-*/
-  _url = '/assets/data/contacts.json';
+  // _url = '/assets/data/contacts.json';
   constructor(private http: HttpClient) { }
 
   public getContacts(): Observable<Contact> {

@@ -10,11 +10,8 @@ export class ContactService {
   _url = 'http://localhost:8080/contacts';
   constructor(private httpClient: HttpClient) { }
 
-  public getContacts() {
-    return this.httpClient.get<Contact>(this._url)
-      .pipe(
-        catchError(this.handleError('getContacts', []))
-      );
+  public getContacts(): Observable<Contact> {
+    return this.httpClient.get<Contact>(this._url);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

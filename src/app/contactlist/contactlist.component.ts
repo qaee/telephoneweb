@@ -21,7 +21,7 @@ export class ContactlistComponent implements OnInit {
   private getContacts() {
     this.contactService.getContacts()
       .subscribe(resp => {
-        console.log(resp._embedded.contacts);
+        console.log(resp);
         this.contacts = resp._embedded.contacts;
         this.dataSource = new MatTableDataSource<ContactsEntity>(this.contacts);
       });

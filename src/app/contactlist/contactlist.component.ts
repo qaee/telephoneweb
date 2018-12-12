@@ -72,14 +72,19 @@ export class ContactlistComponent implements OnInit {
     console.log(sort.active);
     switch (sort.active) {
       case 'Name':
-        this.contacts.sort(this.dynamicSort('name'));
+        this.contacts.sort(this.dynamicSort('name', sort.direction));
         break;
     }
   }
-  dynamicSort(property) {
+  dynamicSort(property, direction) {
     return (a, b) => {
-      const result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-      return result;
+      if (direction === 'asc') {
+        const result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result;
+      } else {
+        const result = (a[property] > b[property]) ? -1 : (a[property] < b[property]) ? 1 : 0;
+        return result;
+      }
     };
   }
 }

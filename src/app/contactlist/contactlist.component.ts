@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {Contact, ContactsEntity, ContactService} from '../services/contact.service';
-import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource, Sort} from '@angular/material';
 import {AddDialogComponent} from '../dialogs/add/add.dialog.component';
 import {EditDialogComponent} from '../dialogs/edit/edit.dialog.component';
 
@@ -66,5 +66,20 @@ export class ContactlistComponent implements OnInit {
           console.log("The Update observable is now completed.");
         });
     // this.getContacts();
+  }
+
+  sortData(sort: Sort) {
+    console.log(sort.active);
+    switch (sort.active) {
+      case 'Name':
+        this.contacts.sort(this.dynamicSort('name'));
+        break;
+    }
+  }
+  dynamicSort(property) {
+    return (a, b) => {
+      const result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+      return result;
+    };
   }
 }
